@@ -1,22 +1,19 @@
 from flask import Flask 
 from flask import render_template
 from flask_adminlte import AdminLTE
-import dateutil.parser
+
+
+# Custom class imports
+from models.DBase import connection
+from models.User import User
 
 app = Flask(__name__)
 AdminLTE(app)
 
-class User(object):
-    """
-    Example User object.  Based loosely off of Flask-Login's User model.
-    """
-    full_name = "John Doe"
-    avatar = "/static/img/user2-160x160.jpg"
-    created_at = dateutil.parser.parse("November 12, 2012")
-
 # This is a placeholder user object.  In the real-world, this would
 # probably get populated via ... something.
 current_user = User()
+current_user.full_name = "Tanner Crook"
 
 @app.route('/')
 def index():
